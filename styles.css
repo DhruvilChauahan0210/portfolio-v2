@@ -59,17 +59,55 @@ body {
     width: 8px;
     height: 8px;
     background-color: var(--accent-color);
+    mix-blend-mode: difference;
+    /* Merge effect */
 }
 
 .cursor-outline {
     width: 40px;
     height: 40px;
     border: 1px solid var(--accent-color);
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.2s;
+    mix-blend-mode: difference;
+    /* Merge effect */
 }
 
 body:hover .cursor-outline {
     opacity: 1;
+}
+
+/* Cursor Hover State (Magnetic/Active) */
+.cursor-hover {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: transparent;
+    backdrop-filter: none;
+    /* Removed blur */
+}
+
+/* Cursor Magnetic State (Sticking to buttons) */
+.cursor-magnetic {
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent-color);
+    border-color: transparent;
+    opacity: 0.5;
+    mix-blend-mode: difference;
+    transition: all 0.1s ease;
+    backdrop-filter: none;
+}
+
+/* Cursor Text Hover State */
+.cursor-text {
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    border-color: transparent;
+    opacity: 1;
+    mix-blend-mode: difference;
+    transition: all 0.2s ease;
+    backdrop-filter: none;
 }
 
 /* Navbar */
@@ -686,6 +724,11 @@ pre {
     background: var(--accent-glow);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    /* Ensure tags are above cursor for clean interaction */
+    mix-blend-mode: normal;
+    /* Prevent unwanted blending */
 }
 
 /* Contact Section */
